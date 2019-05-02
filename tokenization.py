@@ -385,6 +385,9 @@ def _is_control(char):
 
 def _is_punctuation(char):
   """Checks whether `chars` is a punctuation character."""
+  if char == '$': # We override this because we have NER markers like $$money$$
+    return False
+
   cp = ord(char)
   # We treat all non-letter/number ASCII as punctuation.
   # Characters such as "^", "$", and "`" are not in the Unicode
